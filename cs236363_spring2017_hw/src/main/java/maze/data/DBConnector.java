@@ -105,9 +105,9 @@ public class DBConnector {
             while(results.next())
             {
                 sb.append("|| ");
-                for (Pair<String, String> field : schema)
+                for (int i =1; i <= schema.size(); i++)
                 {
-                    sb.append(results.getString(field.getKey())).append(" || ");
+                    sb.append(results.getString(i)).append(" || ");
                 }
                 sb.append(System.lineSeparator());
 
@@ -129,6 +129,21 @@ public class DBConnector {
                     " WHERE table_schema='public'\n" +
                     "   AND table_type='BASE TABLE';");
             ResultSet resultSet = pstmt.executeQuery();
+            System.out.println(System.lineSeparator() + "Printing Tables Schemas");
+            while (resultSet.next())
+            {
+                String tableName = resultSet.getString("table_name");
+                System.out.println(tableName);
+                pstmt = connection.prepareStatement("SELECT * From "+ tableName);
+                ResultSet tableResultSet = pstmt.executeQuery();
+                printSchema(tableResultSet);
+            }
+            pstmt = connection.prepareStatement("SELECT table_name\n" +
+                    "  FROM information_schema.views\n" +
+                    " WHERE table_schema='public';");
+
+            resultSet = pstmt.executeQuery();
+            System.out.println(System.lineSeparator() + "Printing Views Schemas");
             while (resultSet.next())
             {
                 String tableName = resultSet.getString("table_name");
