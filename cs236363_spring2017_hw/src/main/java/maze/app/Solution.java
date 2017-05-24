@@ -171,56 +171,17 @@ public class Solution {
         } catch (SQLException e){
 
             int x = Integer.parseInt(e.getSQLState());
-
-            //PostgreSQLErrorCodes a= new PostgreSQLErrorCodes(5);
-
-            switch (x){
-                case PostgreSQLErrorCodes.UNIQUE_VIOLATION.getValue():
-                    result = ReturnValue.ALREADY_EXISTS;
-                    break;
-                case PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION.getValue():
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case RESTRICT_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case NOT_NULL_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case FOREIGN_KEY_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case CHECK_VIOLIATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                default:
-                    result = ReturnValue.ERROR;
-                    break;
+            if (x == PostgreSQLErrorCodes.UNIQUE_VIOLATION.getValue()){
+                result = ReturnValue.ALREADY_EXISTS;
+            } else if (x == PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION.getValue() ||
+                    x == PostgreSQLErrorCodes.RESTRICT_VIOLATION.getValue() ||
+                    x == PostgreSQLErrorCodes.NOT_NULL_VIOLATION.getValue() ||
+                    x == PostgreSQLErrorCodes.FOREIGN_KEY_VIOLATION.getValue() ||
+                    x == PostgreSQLErrorCodes.CHECK_VIOLIATION.getValue()){
+                result = ReturnValue.BAD_PARAMS;
+            } else {
+                result = ReturnValue.ERROR;
             }
-            /*
-            switch (Integer.parseInt(e.getSQLState())){
-                case PostgreSQLErrorCodes.UNIQUE_VIOLATION:
-                    result = ReturnValue.ALREADY_EXISTS;
-                    break;
-                case PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case PostgreSQLErrorCodes.RESTRICT_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case PostgreSQLErrorCodes.NOT_NULL_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case PostgreSQLErrorCodes.FOREIGN_KEY_VIOLATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                case PostgreSQLErrorCodes.CHECK_VIOLIATION:
-                    result = ReturnValue.BAD_PARAMS;
-                    break;
-                default:
-                    result = ReturnValue.ERROR;
-                    break;
-            }*/
         }
         finally {
             try {
