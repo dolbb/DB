@@ -1,7 +1,14 @@
 package maze.app;
 
 import maze.app.business.*;
+import maze.data.DBConnector;
+import org.postgresql.util.PSQLException;
+import maze.data.PostgreSQLErrorCodes;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -10,22 +17,89 @@ import java.util.ArrayList;
  */
 public class Solution {
 
-
-
-    /**
-     * Creates the tables and views for the solution
-     */
     public static void createTables()
     {
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement pstmt1 = null;
+        PreparedStatement pstmt2 = null;
+        PreparedStatement pstmt3 = null;
+        try {
 
+            pstmt1 = connection.prepareStatement("CREATE TABLE Places\n" +
+                    "(\n" +
+                    "    id integer,\n" +
+                    "    PRIMARY KEY (id),\n" +
+                    "    CHECK (id > 0)\n" +
+                    ")");
+            pstmt1.execute();
+            pstmt2 = connection.prepareStatement("CREATE TABLE Users\n" +
+                    "(\n" +
+                    "    id integer,\n" +
+                    "    source integer,\n" +
+                    "    destination integer,\n" +
+                    "    FOREIGN KEY (source) REFERENCES Places(id),\n" +
+                    "    FOREIGN KEY (destination) REFERENCES Places(id),\n" +
+                    "    PRIMARY KEY (id),\n" +
+                    "    CHECK (id > 0),\n" +
+                    "    CHECK (source <> destination)\n" +
+                    ")");
+            pstmt2.execute();
+            pstmt3 = connection.prepareStatement("CREATE TABLE Hops\n" +
+                    "(\n" +
+                    "    source integer,\n" +
+                    "    destination integer,\n" +
+                    "    load integer NOT NULL,\n" +
+                    "    FOREIGN KEY (source) REFERENCES Places(id)," +
+                    "    FOREIGN KEY (destination) REFERENCES Places(id)," +
+                    "    PRIMARY KEY (source, destination),\n" +
+                    "    CHECK (source <> destination),\n" +
+                    "    CHECK (load > 0)\n" +
+                    ")");
+            pstmt3.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                pstmt1.close();
+                pstmt2.close();
+                pstmt3.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    /**
-     *Clears the tables for the solution
-     */
     public static void clearTables()
     {
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement pstmt = null;
+        try {
 
+            pstmt = connection.prepareStatement("TRUNCATE Hops,Users,Places");
+            pstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -33,7 +107,28 @@ public class Solution {
      */
     public static void dropTables()
     {
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement pstmt = null;
+        try {
 
+            pstmt = connection.prepareStatement("DROP TABLE Hops,Users,Places");
+            pstmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -47,7 +142,101 @@ public class Solution {
      */
     public static ReturnValue addHop(Hop hop)
     {
-        return null;
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement add_source_to_places_query = null;
+        PreparedStatement add_dest_to_places_query = null;
+        PreparedStatement insert_hop_query = null;
+
+        try {
+            String source_str = Integer.toString(hop.getSource());
+            String dest_str = Integer.toString(hop.getDestination());
+            String load_str = Integer.toString(hop.getLoad());
+            // Insert only if it's new
+            add_source_to_places_query = connection.prepareStatement("INSERT INTO Places \nSELECT " + source_str +
+                    " WHERE NOT EXISTS (SELECT id FROM Places WHERE id = " + source_str + ")"
+                );
+            add_source_to_places_query.execute();
+
+            add_dest_to_places_query = connection.prepareStatement("INSERT INTO Places \nSELECT " + dest_str +
+                    " WHERE NOT EXISTS (SELECT id FROM Places WHERE id = " + dest_str + ")"
+            );
+            add_dest_to_places_query.execute();
+
+                insert_hop_query = connection.prepareStatement("INSERT INTO Hops Values (" +
+                        source_str + "," + dest_str + "," + load_str + ")");
+                insert_hop_query.execute();
+
+
+        } catch (SQLException e){
+
+            int x = Integer.parseInt(e.getSQLState());
+
+            //PostgreSQLErrorCodes a= new PostgreSQLErrorCodes(5);
+
+            switch (x){
+                case PostgreSQLErrorCodes.UNIQUE_VIOLATION.getValue():
+                    result = ReturnValue.ALREADY_EXISTS;
+                    break;
+                case PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION.getValue():
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case RESTRICT_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case NOT_NULL_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case FOREIGN_KEY_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case CHECK_VIOLIATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                default:
+                    result = ReturnValue.ERROR;
+                    break;
+            }
+            /*
+            switch (Integer.parseInt(e.getSQLState())){
+                case PostgreSQLErrorCodes.UNIQUE_VIOLATION:
+                    result = ReturnValue.ALREADY_EXISTS;
+                    break;
+                case PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case PostgreSQLErrorCodes.RESTRICT_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case PostgreSQLErrorCodes.NOT_NULL_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case PostgreSQLErrorCodes.FOREIGN_KEY_VIOLATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                case PostgreSQLErrorCodes.CHECK_VIOLIATION:
+                    result = ReturnValue.BAD_PARAMS;
+                    break;
+                default:
+                    result = ReturnValue.ERROR;
+                    break;
+            }*/
+        }
+        finally {
+            try {
+                add_source_to_places_query.close();
+                add_dest_to_places_query.close();
+                insert_hop_query.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**

@@ -2,7 +2,7 @@ package maze.app;
 
 import maze.data.DBConnector;
 
-
+import maze.app.business.Hop;
 import java.sql.*;
 
 
@@ -12,11 +12,19 @@ import java.sql.*;
 public class Example {
 
     public static void main(String[] args) {
-        dropTable();
-        createTable();
-        insertIntoTable();
-        selectFromTable();
-        dropTable();
+        //Solution.createTables();
+        //Solution.clearTables();
+        //Solution.dropTables();
+        Hop a = new Hop(1,2,3);
+        Solution.addHop(a);
+        Solution.addHop(a);
+
+
+        //        dropTable();
+//        createTable();
+//        insertIntoTable();
+//        selectFromTable();
+//        dropTable();
 
 
     }
