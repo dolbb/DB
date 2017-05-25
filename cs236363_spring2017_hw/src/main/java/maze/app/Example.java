@@ -12,7 +12,9 @@ import java.sql.*;
 public class Example {
 
     public static void main(String[] args) {
-        //Solution.createTables();
+
+        Solution.dropTables();
+        Solution.createTables();
         //Solution.clearTables();
         //Solution.dropTables();
         Hop a = new Hop(1,2,3);

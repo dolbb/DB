@@ -17,54 +17,70 @@ import java.util.ArrayList;
  */
 public class Solution {
 
+    private static boolean check_bad_param(SQLException e){
+        int x = Integer.parseInt(e.getSQLState());
+        if (x == PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION.getValue() ||
+                x == PostgreSQLErrorCodes.RESTRICT_VIOLATION.getValue() ||
+                x == PostgreSQLErrorCodes.NOT_NULL_VIOLATION.getValue() ||
+                x == PostgreSQLErrorCodes.CHECK_VIOLIATION.getValue()) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean check_already_exists(SQLException e){
+        int x = Integer.parseInt(e.getSQLState());
+        if (x == PostgreSQLErrorCodes.UNIQUE_VIOLATION.getValue())
+            return true;
+        return false;
+    }
+
+    private static boolean check_foreign_dep(SQLException e){
+        int x = Integer.parseInt(e.getSQLState());
+        if (x == PostgreSQLErrorCodes.FOREIGN_KEY_VIOLATION.getValue())
+            return true;
+        return false;
+    }
+
+
     public static void createTables()
     {
         Connection connection = DBConnector.getConnection();
-        PreparedStatement pstmt1 = null;
-        PreparedStatement pstmt2 = null;
-        PreparedStatement pstmt3 = null;
+        PreparedStatement create_users_query = null;
+        PreparedStatement create_hops_query = null;
         try {
-
-            pstmt1 = connection.prepareStatement("CREATE TABLE Places\n" +
-                    "(\n" +
-                    "    id integer,\n" +
-                    "    PRIMARY KEY (id),\n" +
-                    "    CHECK (id > 0)\n" +
-                    ")");
-            pstmt1.execute();
-            pstmt2 = connection.prepareStatement("CREATE TABLE Users\n" +
-                    "(\n" +
-                    "    id integer,\n" +
-                    "    source integer,\n" +
-                    "    destination integer,\n" +
-                    "    FOREIGN KEY (source) REFERENCES Places(id),\n" +
-                    "    FOREIGN KEY (destination) REFERENCES Places(id),\n" +
-                    "    PRIMARY KEY (id),\n" +
-                    "    CHECK (id > 0),\n" +
-                    "    CHECK (source <> destination)\n" +
-                    ")");
-            pstmt2.execute();
-            pstmt3 = connection.prepareStatement("CREATE TABLE Hops\n" +
+            create_hops_query = connection.prepareStatement("CREATE TABLE Hops\n" +
                     "(\n" +
                     "    source integer,\n" +
                     "    destination integer,\n" +
                     "    load integer NOT NULL,\n" +
-                    "    FOREIGN KEY (source) REFERENCES Places(id)," +
-                    "    FOREIGN KEY (destination) REFERENCES Places(id)," +
                     "    PRIMARY KEY (source, destination),\n" +
                     "    CHECK (source <> destination),\n" +
-                    "    CHECK (load > 0)\n" +
+                    "    CHECK (load > 0),\n" +
+                    "    CHECK (source > 0),\n" +
+                    "    CHECK (destination > 0)\n" +
                     ")");
-            pstmt3.execute();
+            create_hops_query.execute();
+            create_users_query = connection.prepareStatement("CREATE TABLE Users\n" +
+                    "(\n" +
+                    "    id integer,\n" +
+                    "    source integer,\n" +
+                    "    destination integer,\n" +
+                    "    FOREIGN KEY (source, destination) REFERENCES Hops(source, destination),\n" +
+                    "    PRIMARY KEY (id),\n" +
+                    "    CHECK (id > 0),\n" +
+                    "    CHECK (source <> destination)\n" +
+                    ")");
+            create_users_query.execute();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
             try {
-                pstmt1.close();
-                pstmt2.close();
-                pstmt3.close();
+                create_users_query.close();
+                create_hops_query.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -82,7 +98,7 @@ public class Solution {
         PreparedStatement pstmt = null;
         try {
 
-            pstmt = connection.prepareStatement("TRUNCATE Hops,Users,Places");
+            pstmt = connection.prepareStatement("TRUNCATE Users,Hops");
             pstmt.execute();
 
         } catch (SQLException e) {
@@ -111,7 +127,7 @@ public class Solution {
         PreparedStatement pstmt = null;
         try {
 
-            pstmt = connection.prepareStatement("DROP TABLE Hops,Users,Places");
+            pstmt = connection.prepareStatement("DROP TABLE Users,Hops");
             pstmt.execute();
 
         } catch (SQLException e) {
@@ -144,40 +160,16 @@ public class Solution {
     {
         ReturnValue result = ReturnValue.OK;
         Connection connection = DBConnector.getConnection();
-        PreparedStatement add_source_to_places_query = null;
-        PreparedStatement add_dest_to_places_query = null;
         PreparedStatement insert_hop_query = null;
 
         try {
-            String source_str = Integer.toString(hop.getSource());
-            String dest_str = Integer.toString(hop.getDestination());
-            String load_str = Integer.toString(hop.getLoad());
-            // Insert only if it's new
-            add_source_to_places_query = connection.prepareStatement("INSERT INTO Places \nSELECT " + source_str +
-                    " WHERE NOT EXISTS (SELECT id FROM Places WHERE id = " + source_str + ")"
-                );
-            add_source_to_places_query.execute();
-
-            add_dest_to_places_query = connection.prepareStatement("INSERT INTO Places \nSELECT " + dest_str +
-                    " WHERE NOT EXISTS (SELECT id FROM Places WHERE id = " + dest_str + ")"
-            );
-            add_dest_to_places_query.execute();
-
-                insert_hop_query = connection.prepareStatement("INSERT INTO Hops Values (" +
-                        source_str + "," + dest_str + "," + load_str + ")");
-                insert_hop_query.execute();
-
-
+            insert_hop_query = connection.prepareStatement("INSERT INTO Hops Values (" +
+                    hop.getSource() + "," + hop.getDestination() + "," + hop.getLoad() + ")");
+            insert_hop_query.execute();
         } catch (SQLException e){
-
-            int x = Integer.parseInt(e.getSQLState());
-            if (x == PostgreSQLErrorCodes.UNIQUE_VIOLATION.getValue()){
+            if (check_already_exists(e)){
                 result = ReturnValue.ALREADY_EXISTS;
-            } else if (x == PostgreSQLErrorCodes.INTEGRITY_CONSTRAINT_VIOLATION.getValue() ||
-                    x == PostgreSQLErrorCodes.RESTRICT_VIOLATION.getValue() ||
-                    x == PostgreSQLErrorCodes.NOT_NULL_VIOLATION.getValue() ||
-                    x == PostgreSQLErrorCodes.FOREIGN_KEY_VIOLATION.getValue() ||
-                    x == PostgreSQLErrorCodes.CHECK_VIOLIATION.getValue()){
+            } else if (check_bad_param(e)){
                 result = ReturnValue.BAD_PARAMS;
             } else {
                 result = ReturnValue.ERROR;
@@ -185,8 +177,6 @@ public class Solution {
         }
         finally {
             try {
-                add_source_to_places_query.close();
-                add_dest_to_places_query.close();
                 insert_hop_query.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -229,7 +219,7 @@ public class Solution {
             rs.close();
 
         } catch (SQLException e){
-
+            //it's already default as bad
         }
         finally {
             try {
@@ -266,16 +256,17 @@ public class Solution {
         try {
             if (getHop(hop.getSource(), hop.getDestination()).getSource() == -1){
                 result = ReturnValue.NOT_EXISTS;
-            } else if (hop.getLoad() < 1){
-                result = ReturnValue.BAD_PARAMS;
-            }
-            else {
+            } else {
                 update_hop_query = connection.prepareStatement("UPDATE Hops set load = " + hop.getLoad() +
                         "WHERE source = " + hop.getSource() + " and destination = " + hop.getDestination());
                 update_hop_query.execute();
             }
         } catch (SQLException e){
-            result = ReturnValue.ERROR;
+            if (check_bad_param(e)) {
+                result = ReturnValue.BAD_PARAMS;
+            } else {
+                result = ReturnValue.ERROR;
+            }
         }
         finally {
             try {
@@ -351,7 +342,46 @@ public class Solution {
      */
     public static ReturnValue addUser(User user)
     {
-       return null;
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement insert_user_query = null;
+
+        try {
+            Hop user_hop = getHop(user.getSource(), user.getDestination());
+            if (user.getSource() < 1 || user.getDestination() < 1 || user.getId() < 1){
+                result = ReturnValue.BAD_PARAMS;
+            } else if (user_hop.getSource() == -1){
+                result = ReturnValue.NOT_EXISTS;
+            } else {
+                insert_user_query = connection.prepareStatement("INSERT INTO Users Values (" +
+                        user.getId() + "," + user.getSource() + "," + user.getDestination() + ")");
+                insert_user_query.execute();
+            }
+
+        } catch (SQLException e){
+            if (check_already_exists(e)){
+                result = ReturnValue.ALREADY_EXISTS;
+            } else if (check_foreign_dep(e)){
+                result = ReturnValue.NOT_EXISTS;
+            } else if (check_bad_param(e)){
+                result = ReturnValue.BAD_PARAMS;
+            } else {
+                result = ReturnValue.ERROR;
+            }
+        }
+        finally {
+            try {
+                insert_user_query.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
@@ -363,7 +393,41 @@ public class Solution {
      */
     public static User getUser(int id)
     {
-        return null;
+        User result = User.badUser;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement get_user_query = null;
+
+        try {
+            get_user_query = connection.prepareStatement("SELECT * FROM Users where id = " + id);
+            ResultSet rs = get_user_query.executeQuery();
+            boolean once = false;
+            while (rs.next()){
+                once = true;
+                int s = Integer.parseInt(rs.getString("source"));
+                int d = Integer.parseInt(rs.getString("destination"));
+                result = new User(id, s, d);
+            }
+            rs.close();
+
+        } catch (SQLException e){
+
+        }
+        finally {
+            try {
+                get_user_query.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+
+
+
     }
 
     /**
@@ -377,8 +441,41 @@ public class Solution {
      */
     public static ReturnValue updateUserHop(User user)
     {
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement update_user_query = null;
 
-       return  null;
+        try {
+            if (getUser(user.getId()).getSource() == -1){
+                result = ReturnValue.NOT_EXISTS;
+            } else {
+                update_user_query = connection.prepareStatement("UPDATE Users set source = " +
+                        user.getSource() + ", destination = " + user.getDestination() + "WHERE id = " + user.getId());
+                update_user_query.execute();
+            }
+        } catch (SQLException e){
+            if (check_bad_param(e)) {
+                result = ReturnValue.BAD_PARAMS;
+            }
+            else {
+                result = ReturnValue.ERROR;
+            }
+        }
+        finally {
+            try {
+                if (update_user_query != null) {
+                    update_user_query.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
@@ -391,7 +488,36 @@ public class Solution {
      */
     public static ReturnValue deleteUser(int userId)
     {
-      return null;
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement delete_user_query = null;
+
+        try {
+            if (getUser(userId).getSource() == -1){
+                result = ReturnValue.NOT_EXISTS;
+            }
+            else {
+                delete_user_query = connection.prepareStatement("DELETE FROM Users WHERE id = " + userId);
+                delete_user_query.execute();
+            }
+        } catch (SQLException e){
+            result = ReturnValue.ERROR;
+        }
+        finally {
+            try {
+                if (delete_user_query != null) {
+                    delete_user_query.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**

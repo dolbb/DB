@@ -19,8 +19,8 @@
       <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="169">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -29,16 +29,27 @@
       <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="264" column="0" lean-forward="true" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+            <state relative-caret-position="513">
+              <caret line="519" column="22" lean-forward="true" selection-start-line="519" selection-start-column="22" selection-end-line="519" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#createTables#0;class#Solution#0" expanded="false" />
                 <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
                 <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
                 <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-                <element signature="e#13660#13661#0" expanded="true" />
-                <element signature="e#13688#13689#0" expanded="true" />
+                <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+                <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+                <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+                <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+                <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+                <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+                <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+                <element signature="e#17489#17490#0" expanded="true" />
+                <element signature="e#17517#17518#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,11 +93,18 @@
       <find>business</find>
       <find>int</find>
       <find>gets</find>
-      <find>PostgreSQLErrorCodes</find>
       <find>delete</find>
       <find>updatehop</find>
+      <find>addhop</find>
+      <find>adduser</find>
       <find>update</find>
+      <find>getuser</find>
+      <find>updateu</find>
       <find>select</find>
+      <find>getSQLState</find>
+      <find>getSq</find>
+      <find>PostgreSQLErrorCodes</find>
+      <find>ALREAD</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -102,8 +120,8 @@
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
         <option value="$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.0.0/postgresql-42.0.0.jar!/org/postgresql/util/PSQLException.class" />
-        <option value="$PROJECT_DIR$/src/main/java/maze/app/Solution.java" />
         <option value="$PROJECT_DIR$/src/main/java/maze/app/Example.java" />
+        <option value="$PROJECT_DIR$/src/main/java/maze/app/Solution.java" />
       </list>
     </option>
   </component>
@@ -505,7 +523,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32819384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -561,7 +579,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -598,12 +616,23 @@
           <caret line="178" column="5" lean-forward="true" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,12 +681,23 @@
           <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -707,12 +747,23 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -738,12 +789,23 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -769,12 +831,23 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -866,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/maze/app/SimpleSolutionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -931,6 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="253" column="22" lean-forward="false" selection-start-line="253" selection-start-column="18" selection-end-line="253" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -938,14 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -966,26 +1024,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="169">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="264" column="0" lean-forward="true" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+        <state relative-caret-position="513">
+          <caret line="519" column="22" lean-forward="true" selection-start-line="519" selection-start-column="22" selection-end-line="519" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
-            <element signature="e#13660#13661#0" expanded="true" />
-            <element signature="e#13688#13689#0" expanded="true" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="e#17489#17490#0" expanded="true" />
+            <element signature="e#17517#17518#0" expanded="true" />
           </folding>
         </state>
       </provider>
