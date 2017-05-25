@@ -16,13 +16,21 @@ public class Example {
 
         Solution.dropTables();
         Solution.createTables();
-        //Solution.clearTables();
+        //Solution. clearTables();
         //Solution.dropTables();
         Hop a = new Hop(1,2,3);
         Hop b = new Hop(4,5,6);
         Solution.addHop(a);
         Solution.addHop(a);
         Solution.addHop(b);
+        Solution.addHop(new Hop(1,4, 7));
+        Solution.addHop(new Hop(2,5, 2));
+        Solution.addHop(new Hop(3,4, 3));
+        Solution.addHop(new Hop(1,2, 5));
+        Solution.addHop(new Hop(4,1, 6));
+        Solution.addHop(new Hop(3,2, 8));
+        Solution.addHop(new Hop(1,5, 9));
+        Solution.addHop(new Hop(5,1, 1));
         //System.out.println(Solution.getHop(a.getSource(), a.getDestination()).getSource());
         System.out.println(Solution.deleteHop(10, 20));
         System.out.println(Solution.deleteHop(1, 2));

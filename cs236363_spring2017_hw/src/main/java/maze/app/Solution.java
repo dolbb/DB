@@ -534,6 +534,14 @@ public class Solution {
      */
     public static ArrayList<Hop> topKLoadedHops(int k, int usersThreshold)
     {
+        String query =
+            "select hops.source, hops.destination, (count(*) + 1) * hops.load as actual_load from users/n" +
+            "inner join hops on users.source = hops.source and users.destination = hops.destination/n" +
+            "group by hops.source, hops.destination, hops.load/n" +
+            "having count(*) > " + usersThreshold + "/n" +
+            "order by actual_load desc/n" +
+            "limit " + k;
+
        return null;
     }
 
