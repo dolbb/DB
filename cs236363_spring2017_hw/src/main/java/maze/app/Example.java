@@ -3,6 +3,7 @@ package maze.app;
 import maze.data.DBConnector;
 
 import maze.app.business.Hop;
+import maze.app.business.User;
 import java.sql.*;
 
 
@@ -30,6 +31,18 @@ public class Example {
         System.out.println(Solution.updateHopLoad(new Hop(4,5,1)));
         System.out.println(Solution.updateHopLoad(new Hop(4,5,-1)));
         System.out.println(Solution.updateHopLoad(new Hop(4,7,1)));
+
+        Solution.addHop(a);
+
+        System.out.println(Solution.addUser(new User(1, 3, 4)));
+        System.out.println(Solution.addUser(new User(1, 4, 5)));
+        System.out.println(Solution.getUser(1));
+        System.out.println(Solution.getUser(2));
+        System.out.println(Solution.updateUserHop(new User(2, 4, 5)));
+        System.out.println(Solution.updateUserHop(new User(1, 1, 2)));
+        System.out.println(Solution.deleteUser(5));
+        System.out.println(Solution.deleteUser(1));
+        System.out.println(Solution.getUser(1));
 
 
         //        dropTable();

@@ -371,7 +371,9 @@ public class Solution {
         }
         finally {
             try {
-                insert_user_query.close();
+                if (insert_user_query != null) {
+                    insert_user_query.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
