@@ -16,8 +16,18 @@ public class Example {
         //Solution.clearTables();
         //Solution.dropTables();
         Hop a = new Hop(1,2,3);
+        Hop b = new Hop(4,5,6);
         Solution.addHop(a);
         Solution.addHop(a);
+        Solution.addHop(b);
+        //System.out.println(Solution.getHop(a.getSource(), a.getDestination()).getSource());
+        System.out.println(Solution.deleteHop(10, 20));
+        System.out.println(Solution.deleteHop(1, 2));
+        System.out.println(Solution.deleteHop(1, 2));
+
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,-1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,7,1)));
 
 
         //        dropTable();

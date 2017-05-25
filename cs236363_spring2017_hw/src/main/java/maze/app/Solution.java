@@ -210,7 +210,40 @@ public class Solution {
      */
     public static Hop getHop(int source, int destination)
     {
-        return null;
+        Hop result = Hop.badHop;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement get_hop_query = null;
+
+        try {
+            get_hop_query = connection.prepareStatement("SELECT * FROM Hops where source = " + source +
+                    " and destination = " + destination);
+            ResultSet rs = get_hop_query.executeQuery();
+            boolean once = false;
+            while (rs.next()){
+                once = true;
+                int s = Integer.parseInt(rs.getString("source"));
+                int d = Integer.parseInt(rs.getString("destination"));
+                int l = Integer.parseInt(rs.getString("load"));
+                result = new Hop(s, d, l);
+            }
+            rs.close();
+
+        } catch (SQLException e){
+
+        }
+        finally {
+            try {
+                get_hop_query.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
 
@@ -226,7 +259,39 @@ public class Solution {
      */
     public static ReturnValue updateHopLoad(Hop hop)
     {
-        return null;
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement update_hop_query = null;
+
+        try {
+            if (getHop(hop.getSource(), hop.getDestination()).getSource() == -1){
+                result = ReturnValue.NOT_EXISTS;
+            } else if (hop.getLoad() < 1){
+                result = ReturnValue.BAD_PARAMS;
+            }
+            else {
+                update_hop_query = connection.prepareStatement("UPDATE Hops set load = " + hop.getLoad() +
+                        "WHERE source = " + hop.getSource() + " and destination = " + hop.getDestination());
+                update_hop_query.execute();
+            }
+        } catch (SQLException e){
+            result = ReturnValue.ERROR;
+        }
+        finally {
+            try {
+                if (update_hop_query != null) {
+                    update_hop_query.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
 	
@@ -241,8 +306,37 @@ public class Solution {
      */
     public static ReturnValue deleteHop(int source, int destination)
     {
-       
-        return null;
+        ReturnValue result = ReturnValue.OK;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement delete_hop_query = null;
+
+        try {
+            if (getHop(source, destination).getSource() == -1){
+                result = ReturnValue.NOT_EXISTS;
+            }
+            else {
+                delete_hop_query = connection.prepareStatement("DELETE FROM Hops WHERE source = " +
+                        source + " and destination = " + destination);
+                delete_hop_query.execute();
+            }
+        } catch (SQLException e){
+            result = ReturnValue.ERROR;
+        }
+        finally {
+            try {
+                if (delete_hop_query != null) {
+                    delete_hop_query.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     /**
