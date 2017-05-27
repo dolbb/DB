@@ -3,6 +3,7 @@ package maze.app;
 import maze.data.DBConnector;
 
 import maze.app.business.Hop;
+import maze.app.business.User;
 import java.sql.*;
 
 
@@ -12,12 +13,72 @@ import java.sql.*;
 public class Example {
 
     public static void main(String[] args) {
-        //Solution.createTables();
+
+        Solution.dropTables();
+        Solution.createTables();
+<<<<<<< HEAD
         //Solution.clearTables();
         //Solution.dropTables();
         Hop a = new Hop(1,2,3);
+        Hop b = new Hop(4,5,6);
+=======
+        //Solution. clearTables();
+        //Solution.dropTables();
+        Hop a = new Hop(1,2,3);
+        Hop b = new Hop(4,5,6);
         Solution.addHop(a);
+>>>>>>> origin/master
         Solution.addHop(a);
+        Solution.addHop(b);
+        Solution.addHop(new Hop(1,4, 7));
+        Solution.addHop(new Hop(2,5, 2));
+        Solution.addHop(new Hop(3,4, 3));
+        Solution.addHop(new Hop(1,2, 5));
+        Solution.addHop(new Hop(4,1, 6));
+        Solution.addHop(new Hop(3,2, 8));
+        Solution.addHop(new Hop(1,5, 9));
+        Solution.addHop(new Hop(5,1, 1));
+        //System.out.println(Solution.getHop(a.getSource(), a.getDestination()).getSource());
+        System.out.println(Solution.deleteHop(10, 20));
+        System.out.println(Solution.deleteHop(1, 2));
+        System.out.println(Solution.deleteHop(1, 2));
+
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,-1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,7,1)));
+
+        Solution.addHop(a);
+        Solution.addHop(b);
+        //System.out.println(Solution.getHop(a.getSource(), a.getDestination()).getSource());
+        System.out.println(Solution.deleteHop(10, 20));
+        System.out.println(Solution.deleteHop(1, 2));
+        System.out.println(Solution.deleteHop(1, 2));
+
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,5,-1)));
+        System.out.println(Solution.updateHopLoad(new Hop(4,7,1)));
+
+        Solution.addHop(a);
+
+        System.out.println(Solution.addUser(new User(1, 3, 4)));
+        System.out.println(Solution.addUser(new User(1, 4, 5)));
+        System.out.println(Solution.getUser(1));
+        System.out.println(Solution.getUser(2));
+        System.out.println(Solution.updateUserHop(new User(2, 4, 5)));
+        System.out.println(Solution.updateUserHop(new User(1, 1, 2)));
+        System.out.println(Solution.deleteUser(5));
+        System.out.println(Solution.deleteUser(1));
+        System.out.println(Solution.getUser(1));
+
+        System.out.println(Solution.addUser(new User(1, 3, 4)));
+        System.out.println(Solution.addUser(new User(1, 4, 5)));
+        System.out.println(Solution.getUser(1));
+        System.out.println(Solution.getUser(2));
+        System.out.println(Solution.updateUserHop(new User(2, 4, 5)));
+        System.out.println(Solution.updateUserHop(new User(1, 1, 2)));
+        System.out.println(Solution.deleteUser(5));
+        System.out.println(Solution.deleteUser(1));
+        System.out.println(Solution.getUser(1));
 
 
         //        dropTable();
