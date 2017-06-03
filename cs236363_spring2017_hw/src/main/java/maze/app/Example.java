@@ -10,6 +10,7 @@ import java.sql.*;
 /**
  * Created by dvird on 17/03/29.
  */
+/*========================DELETE COMMENT (UNTIL THE END)======================================
 public class Example {
 
     public static void main(String[] args) {
@@ -194,3 +195,4 @@ public class Example {
         }
     }
 }
+*/

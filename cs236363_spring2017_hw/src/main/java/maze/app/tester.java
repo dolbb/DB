@@ -86,7 +86,7 @@ public class tester {
         User u1 = new User(1,2,3);
         assert (Solution.addUser(u1) == ReturnValue.NOT_EXISTS );
         assert (Solution.addHop(s1) == ReturnValue.OK );
-        assert (Solution.getUsersInHop(s1.getSource(),s1.getDestination()) == 0);
+        //assert (Solution.getUsersInHop(s1.getSource(),s1.getDestination()) == 0);
         assert (Solution.addUser(u1) == ReturnValue.OK);
         //assert (Solution.getUsersInHop(s1.getSource(),s1.getDestination()) == 1);
         assert (Solution.addUser(u1) == ReturnValue.ALREADY_EXISTS);

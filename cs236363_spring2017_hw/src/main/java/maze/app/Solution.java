@@ -533,15 +533,38 @@ public class Solution {
      */
     public static ArrayList<Hop> topKLoadedHops(int k, int usersThreshold)
     {
-        String query =
-            "select hops.source, hops.destination, (count(*) + 1) * hops.load as actual_load from users/n" +
-            "inner join hops on users.source = hops.source and users.destination = hops.destination/n" +
-            "group by hops.source, hops.destination, hops.load/n" +
-            "having count(*) > " + usersThreshold + "/n" +
-            "order by actual_load desc/n" +
-            "limit " + k;
-
-       return null;
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement top_k_loaded_hops_quarry = null;
+        String queryString =
+                "select hops.source, hops.destination, (count(*) + 1) * hops.load as actual_load from users/n" +
+                        "inner join hops on users.source = hops.source and users.destination = hops.destination/n" +
+                        "group by hops.source, hops.destination, hops.load/n" +
+                        "having count(*) > " + usersThreshold + "/n" +
+                        "order by actual_load desc/n" +
+                        "limit " + k;
+        ArrayList<Hop> result = new ArrayList<Hop>();
+        try {
+            top_k_loaded_hops_quarry = connection.prepareStatement(queryString);
+            ResultSet rs = top_k_loaded_hops_quarry.executeQuery();
+            while(rs.next()){
+                result.add(new Hop(rs.getInt("source"), rs.getInt("dest"), rs.getInt("load")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                top_k_loaded_hops_quarry.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
 
@@ -557,9 +580,9 @@ public class Solution {
     public static PathsList getAllPaths(int source, int destination, int maxLength)
     {
         Connection connection = DBConnector.getConnection();
-        PreparedStatement get_paths_query = null;
-        PathsList paths = new PathsList(); //TODO: is this the syntax init??
-        String query = "";
+        PreparedStatement get_paths_query;
+        PathsList pl = new PathsList();
+        String query;
         String paths_query = "";
         String join_part = "";
         String select_part = "";
@@ -598,12 +621,10 @@ public class Solution {
                 paths_query = exact_num_hops_query;
             }
         }
-
         String actual_load_join = "LEFT OUTER JOIN \n" +
                 "(SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users \n" + "" +
                 "INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination \n" +
                 "GROUP BY hops.source, hops.destination, hops.load) AS L";
-
         select_part = "";
         join_part = "";
         String sum_part = "";
@@ -621,15 +642,11 @@ public class Solution {
                         ".s AND col" + (num_hops + 1) + " = L" + num_hops + ".d \n";
             }
         }
-
         query = "SELECT " + select_part + sum_part + " AS len FROM (\n" + paths_query +
                 ") as A \n" + join_part + "\nORDER BY len ASC";
-
-
         try {
             get_paths_query = connection.prepareStatement(query);
             ResultSet rs = get_paths_query.executeQuery();
-            PathsList pl = new PathsList();
             while (rs.next()) {
                 Path p = new Path();
                 for (int i = 1; i <= maxLength; i++) {
@@ -641,15 +658,19 @@ public class Solution {
                 }
                 pl.addPath(p);
             }
-            System.out.println(pl.toString());
             rs.close();
-
-            return null;
         }
-        catch (SQLException e){
-
+        catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return pl;
     }
 
 
