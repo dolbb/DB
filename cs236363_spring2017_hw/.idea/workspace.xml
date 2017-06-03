@@ -2,6 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/CS236363_SPRING2017_HW.iml" line="10" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java" line="292" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5cc555d-cde0-4238-a86d-cfec313cda4a" name="Default" comment="" />
@@ -18,54 +19,157 @@
     <favorites_list name="CS236363_HW" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="178" column="56" lean-forward="true" selection-start-line="178" selection-start-column="56" selection-end-line="178" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createTables#0;class#Solution#0" expanded="false" />
-                <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
-                <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
-                <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostgreSQLErrorCodes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/maze/data/PostgreSQLErrorCodes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.38333333">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-204">
+                  <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ReturnValue.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/ReturnValue.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PostgreSQLErrorCodes.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/data/PostgreSQLErrorCodes.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PathsList.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/PathsList.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Path.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Path.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Hop.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#581#582#0" expanded="false" />
+                    <element signature="e#610#611#0" expanded="false" />
+                    <element signature="e#651#652#0" expanded="false" />
+                    <element signature="e#687#688#0" expanded="false" />
+                    <element signature="e#722#723#0" expanded="false" />
+                    <element signature="e#756#757#0" expanded="false" />
+                    <element signature="e#807#808#0" expanded="false" />
+                    <element signature="e#853#854#0" expanded="false" />
+                    <element signature="e#881#882#0" expanded="false" />
+                    <element signature="e#908#909#0" expanded="false" />
+                    <element signature="e#945#946#0" expanded="false" />
+                    <element signature="e#977#978#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="332">
+                  <caret line="572" column="45" lean-forward="false" selection-start-line="572" selection-start-column="45" selection-end-line="572" selection-end-column="45" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+                    <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+                    <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
+                    <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
+                    <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+                    <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+                    <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+                    <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+                    <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+                    <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+                    <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+                    <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ResultSet.java" pinned="false" current-in-tab="false">
+            <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/ResultSet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="173" column="47" lean-forward="true" selection-start-line="173" selection-start-column="47" selection-end-line="173" selection-end-column="47" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Solution</find>
       <find>business</find>
       <find>int</find>
-      <find>int</find>
       <find>gets</find>
+      <find>execute</find>
+      <find>user</find>
+      <find>user_hop</find>
+      <find>once</find>
+      <find>default</find>
+      <find>result</find>
+      <find>getin</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -80,8 +184,8 @@
         <option value="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
         <option value="$PROJECT_DIR$/.idea/modules.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/config.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/maze/app/Example.java" />
         <option value="$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.0.0/postgresql-42.0.0.jar!/org/postgresql/util/PSQLException.class" />
+        <option value="$PROJECT_DIR$/src/main/java/maze/app/Example.java" />
         <option value="$PROJECT_DIR$/src/main/java/maze/app/Solution.java" />
       </list>
     </option>
@@ -94,10 +198,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="width" value="1536" />
+    <option name="height" value="864" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -114,6 +216,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -254,6 +359,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maze" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="business" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS236363_HW" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs236363_spring2017_hw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -278,14 +417,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -564,13 +701,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -582,7 +718,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2734375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27239582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -593,6 +729,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329859" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -611,17 +748,17 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976007" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.138125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27239582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329859" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -632,15 +769,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java</url>
-          <line>200</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -649,6 +778,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/PathsList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#610#611#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
+            <element signature="e#722#723#0" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
+            <element signature="e#853#854#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
+            <element signature="e#908#909#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
+            <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11004">
+          <caret line="524" column="11" lean-forward="false" selection-start-line="524" selection-start-column="11" selection-end-line="524" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/data/PostgreSQLErrorCodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3738">
+          <caret line="178" column="17" lean-forward="true" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
+            <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/maze/app/SimpleSolutionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -686,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,10 +947,26 @@
           <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -708,7 +975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2646">
           <caret line="132" column="20" lean-forward="false" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,7 +1005,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#610#611#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
+            <element signature="e#722#723#0" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
+            <element signature="e#853#854#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
+            <element signature="e#908#909#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -749,10 +1028,26 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -768,7 +1063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,10 +1072,26 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -797,7 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,10 +1116,26 @@
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -826,7 +1151,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +1158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="12" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="12" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,7 +1172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -864,7 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -872,7 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="10" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="7" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,30 +1207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/PathsList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Path.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,7 +1229,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -942,15 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1659">
           <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -958,15 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/PreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -982,46 +1258,128 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="253" column="22" lean-forward="false" selection-start-line="253" selection-start-column="18" selection-end-line="253" selection-end-column="22" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="365" column="14" lean-forward="false" selection-start-line="365" selection-start-column="14" selection-end-line="365" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="829">
+          <caret line="473" column="28" lean-forward="true" selection-start-line="473" selection-start-column="28" selection-end-line="473" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Hop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+          <folding>
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#610#611#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#687#688#0" expanded="false" />
+            <element signature="e#722#723#0" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
+            <element signature="e#807#808#0" expanded="false" />
+            <element signature="e#853#854#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
+            <element signature="e#908#909#0" expanded="false" />
+            <element signature="e#945#946#0" expanded="false" />
+            <element signature="e#977#978#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Example.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        <state relative-caret-position="-204">
+          <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="173" column="47" lean-forward="true" selection-start-line="173" selection-start-column="47" selection-end-line="173" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/ReturnValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="54" />
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/data/PostgreSQLErrorCodes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="119">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/Path.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/business/PathsList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/maze/app/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="178" column="56" lean-forward="true" selection-start-line="178" selection-start-column="56" selection-end-line="178" selection-end-column="56" />
+        <state relative-caret-position="332">
+          <caret line="572" column="45" lean-forward="false" selection-start-line="572" selection-start-column="45" selection-end-line="572" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#createTables#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_bad_param#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_already_exists#0;class#Solution#0" expanded="false" />
+            <element signature="method#check_foreign_dep#0;class#Solution#0" expanded="false" />
             <element signature="method#clearTables#0;class#Solution#0" expanded="false" />
             <element signature="docComment;method#dropTables#0;class#Solution#0" expanded="false" />
             <element signature="method#dropTables#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#addHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateHopLoad#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#deleteHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#addUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="method#getUser#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="method#updateUserHop#0;class#Solution#0" expanded="false" />
+            <element signature="docComment;method#deleteUser#0;class#Solution#0" expanded="false" />
           </folding>
         </state>
       </provider>

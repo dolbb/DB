@@ -42,7 +42,6 @@ public class Solution {
         return false;
     }
 
-
     public static void createTables()
     {
         Connection connection = DBConnector.getConnection();
@@ -211,9 +210,9 @@ public class Solution {
             boolean once = false;
             while (rs.next()){
                 once = true;
-                int s = Integer.parseInt(rs.getString("source"));
-                int d = Integer.parseInt(rs.getString("destination"));
-                int l = Integer.parseInt(rs.getString("load"));
+                int s = rs.getInt("source");
+                int d = rs.getInt("destination");
+                int l = rs.getInt("load");
                 result = new Hop(s, d, l);
             }
             rs.close();
@@ -336,7 +335,7 @@ public class Solution {
      * @return
      * OK in case of success,
      * BAD_PARAMS in case of illegal input parameters
-     * ALREADY_EXISTS if user is allready exsists
+     * ALREADY_EXISTS if user is already exists
      * NOT_EXISTS if the given user's Hop does not exists
      * ERROR in case of other server error
      */
@@ -405,8 +404,8 @@ public class Solution {
             boolean once = false;
             while (rs.next()){
                 once = true;
-                int s = Integer.parseInt(rs.getString("source"));
-                int d = Integer.parseInt(rs.getString("destination"));
+                int s = rs.getInt("source");
+                int d = rs.getInt("destination");
                 result = new User(id, s, d);
             }
             rs.close();
@@ -557,6 +556,43 @@ public class Solution {
      */
     public static PathsList getAllPaths(int source, int destination, int maxLength)
     {
+        Connection connection = DBConnector.getConnection();
+        PreparedStatement get_paths_query = null;
+        PathsList paths = new PathsList(); //TODO: is this the syntax init??
+        String
+
+
+
+
+        try {
+            get_paths_query = connection.prepareStatement("CREATE TABLE Users\n" +
+                    "(\n" +
+                    "    id integer,\n" +
+                    "    source integer,\n" +
+                    "    destination integer,\n" +
+                    "    FOREIGN KEY (source, destination) REFERENCES Hops(source, destination),\n" +
+                    "    PRIMARY KEY (id),\n" +
+                    "    CHECK (id > 0),\n" +
+                    "    CHECK (source <> destination)\n" +
+                    ")");
+            get_paths_query.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                get_paths_query.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return  null;
     }
 
