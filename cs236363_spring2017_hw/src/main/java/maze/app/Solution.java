@@ -559,41 +559,97 @@ public class Solution {
         Connection connection = DBConnector.getConnection();
         PreparedStatement get_paths_query = null;
         PathsList paths = new PathsList(); //TODO: is this the syntax init??
-        String
+        String query = "";
+        String paths_query = "";
+        String join_part = "";
+        String select_part = "";
+        String circle_condition = "";
 
+        for (int num_hops = 1; num_hops <= maxLength; num_hops++){
+            select_part = ", h" + num_hops + ".destination" + select_part;
+            String current_select_part = "";
+            if (num_hops > 1){
+                current_select_part = "h" + num_hops +".source " + select_part;
+            } else {
+                current_select_part = "h1.source as col" + maxLength + ", h1.destination as col" + (maxLength + 1);
+            }
 
+            for (int i = 1; i < maxLength - num_hops + 1; i++){
+                if (num_hops > 1) {
+                    current_select_part = "-1, " + current_select_part;
+                } else {
+                    current_select_part = "-1 as col" + (maxLength - i) + ", " + current_select_part;
+                }
+            }
+            if (num_hops > 1){
+                //inner join hops h3 on h2.source = h3.destination
+                join_part += "inner join hops h" + num_hops + " ON h" + (num_hops - 1) +
+                        ".source = h" + num_hops + ".destination\n";
+            }
+            for (int i = 1; i < num_hops; i++){
+                circle_condition += " AND h" + num_hops + ".source <> h" + i + ".destination";
+            }
+            String s_n_d = "h1.destination = " + destination + " AND h" + num_hops + ".source = " + source;
+            String exact_num_hops_query = "SELECT " + current_select_part + " FROM hops h1\n" +
+                    join_part + "WHERE \n" + s_n_d + circle_condition;
+            if (num_hops > 1){
+                paths_query += "\nUNION ALL\n" + exact_num_hops_query;
+            } else {
+                paths_query = exact_num_hops_query;
+            }
+        }
+
+        String actual_load_join = "LEFT OUTER JOIN \n" +
+                "(SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users \n" + "" +
+                "INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination \n" +
+                "GROUP BY hops.source, hops.destination, hops.load) AS L";
+
+        select_part = "";
+        join_part = "";
+        String sum_part = "";
+        for (int num_hops = 1; num_hops <= maxLength + 1; num_hops++){
+            select_part += "col" + num_hops + ", ";
+
+            if (num_hops <= maxLength){
+                String temp_sum = "COALESCE(L" + num_hops + ".al, 0)";
+                sum_part += temp_sum;
+                if (num_hops <= maxLength - 1){
+                    sum_part += " + ";
+                }
+                join_part += actual_load_join + num_hops + "\n" +
+                        "ON col" + num_hops + " = L" + num_hops +
+                        ".s AND col" + (num_hops + 1) + " = L" + num_hops + ".d \n";
+            }
+        }
+
+        query = "SELECT " + select_part + sum_part + " AS len FROM (\n" + paths_query +
+                ") as A \n" + join_part + "\nORDER BY len ASC";
 
 
         try {
-            get_paths_query = connection.prepareStatement("CREATE TABLE Users\n" +
-                    "(\n" +
-                    "    id integer,\n" +
-                    "    source integer,\n" +
-                    "    destination integer,\n" +
-                    "    FOREIGN KEY (source, destination) REFERENCES Hops(source, destination),\n" +
-                    "    PRIMARY KEY (id),\n" +
-                    "    CHECK (id > 0),\n" +
-                    "    CHECK (source <> destination)\n" +
-                    ")");
-            get_paths_query.execute();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                get_paths_query.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            get_paths_query = connection.prepareStatement(query);
+            ResultSet rs = get_paths_query.executeQuery();
+            PathsList pl = new PathsList();
+            while (rs.next()) {
+                Path p = new Path();
+                for (int i = 1; i <= maxLength; i++) {
+                    int current_vertex = rs.getInt("col" + i);
+                    if (current_vertex > -1){
+                        int next_vertex = rs.getInt("col" + (i + 1));
+                        p.addHop(new Hop(current_vertex, next_vertex));
+                    }
+                }
+                pl.addPath(p);
             }
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            System.out.println(pl.toString());
+            rs.close();
+
+            return null;
         }
-        return  null;
+        catch (SQLException e){
+
+        }
+        return null;
     }
 
 
