@@ -536,18 +536,18 @@ public class Solution {
         Connection connection = DBConnector.getConnection();
         PreparedStatement top_k_loaded_hops_quarry = null;
         String queryString =
-                "select hops.source, hops.destination, (count(*) + 1) * hops.load as actual_load from users/n" +
-                        "inner join hops on users.source = hops.source and users.destination = hops.destination/n" +
-                        "group by hops.source, hops.destination, hops.load/n" +
-                        "having count(*) > " + usersThreshold + "/n" +
-                        "order by actual_load desc/n" +
-                        "limit " + k;
+                "SELECT hops.source, hops.destination, (count(*) + 1) * hops.load AS actual_load FROM users\n" +
+                        "INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination\n" +
+                        "GROUP BY hops.source, hops.destination, hops.load\n" +
+                        "HAVING count(*) >= " + usersThreshold + "\n" +
+                        "ORDER BY actual_load DESC\n" +
+                        "LIMIT " + k;
         ArrayList<Hop> result = new ArrayList<Hop>();
         try {
             top_k_loaded_hops_quarry = connection.prepareStatement(queryString);
             ResultSet rs = top_k_loaded_hops_quarry.executeQuery();
             while(rs.next()){
-                result.add(new Hop(rs.getInt("source"), rs.getInt("dest"), rs.getInt("load")));
+                result.add(new Hop(rs.getInt("source"), rs.getInt("destination"), rs.getInt("actual_load")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

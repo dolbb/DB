@@ -30,7 +30,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>maze.app.Example</mainClass>
+                            <mainClass>maze.app.tester</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
