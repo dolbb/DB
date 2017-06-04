@@ -579,17 +579,85 @@ public class Solution {
      */
     public static PathsList getAllPaths(int source, int destination, int maxLength)
     {
+        /* Example of our query - selecting all paths up to length 3 hops and returning by order of ascending actual load.
+		
+		---------- select all verticies and the sum of the actual load.
+		SELECT col1, col2, col3, col4, COALESCE(L1.al, 0) + COALESCE(L2.al, 0) + COALESCE(L3.al, 0) AS len FROM 
+		(
+			----------  select all paths of 1 hops from source to destination (pad with 2 -1) ----------
+			SELECT  -1 AS col1,  -1 AS col2, h1.source AS col3 , h1.destination AS col4 FROM hops h1
+		UNION ALL
+			----------  select all paths of 2 hops from source to destination (pad with 1 -1) ----------
+			SELECT  -1, h2.source , h2.destination, h1.destination FROM hops h1
+			INNER JOIN hops h2 ON h1.source = h2.destination
+			WHERE 
+				h2.source <> h1.destination
+		UNION ALL
+			----------  select all paths of 3 hops from source to destination ----------
+			SELECT  h3.source , h3.destination, h2.destination, h1.destination FROM hops h1
+			INNER JOIN hops h2 ON h1.source = h2.destination
+			INNER JOIN hops h3 ON h2.source = h3.destination
+			WHERE 
+				h2.source <> h1.destination AND h3.source <> h1.destination AND h3.source <> h2.destination
+		) AS A
+
+		---------- get the actual load for the first hop (a hop with -1 will get 0 from the COALESCE func) ----------
+		LEFT OUTER JOIN
+		(
+			SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users 
+			INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination 
+			GROUP BY hops.source, hops.destination, hops.load
+		) AS L1
+		ON col1 = L1.s AND col2 = L1.d
+
+		---------- get the actual load for the second hop ----------
+		LEFT OUTER JOIN
+		(
+			SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users 
+			INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination 
+			GROUP BY hops.source, hops.destination, hops.load
+		) AS L2
+		ON col2 = L2.s AND col3 = L2.d
+
+		---------- get the actual load for the third hop ----------
+		LEFT OUTER JOIN
+		(
+			SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users 
+			INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination 
+			GROUP BY hops.source, hops.destination, hops.load
+		) AS L3
+		ON col3 = L3.s AND col4 = L3.d
+
+		---------- order by their ascending sum of actual loads. ----------
+		ORDER BY len ASC
+		
+		
+		*/
+		
+		
+		
+		
         Connection connection = DBConnector.getConnection();
         PreparedStatement get_paths_query;
         PathsList pl = new PathsList();
+		// The final query
         String query;
+		// Only the query that returns the paths (no lengths)
         String paths_query = "";
+		// join_part are all the joins we do for hops to get paths of size num_hops.
         String join_part = "";
+		// select_part is an incremental variable that grows for every path size. 
+		// It is responsible for selecting the right columns.
         String select_part = "";
+		// circle_condition is an incremental variable that grows for every path size. 
+		// It is responsible for making sure that we do not get paths with circles.
         String circle_condition = "";
 
+		// Creating the sub query that get's all the paths without circles.
         for (int num_hops = 1; num_hops <= maxLength; num_hops++){
+			// 1. Selecting the right columns
             select_part = ", h" + num_hops + ".destination" + select_part;
+			// The incremental part might be similiar between queries of different sizes, but there are still differences.
             String current_select_part = "";
             if (num_hops > 1){
                 current_select_part = "h" + num_hops +".source " + select_part;
@@ -604,14 +672,17 @@ public class Solution {
                     current_select_part = "-1 as col" + (maxLength - i) + ", " + current_select_part;
                 }
             }
+			// Jointing hops multiple times to get paths.
             if (num_hops > 1){
                 //inner join hops h3 on h2.source = h3.destination
                 join_part += "inner join hops h" + num_hops + " ON h" + (num_hops - 1) +
                         ".source = h" + num_hops + ".destination\n";
             }
+			// Making sure that there are no circles in our paths.
             for (int i = 1; i < num_hops; i++){
                 circle_condition += " AND h" + num_hops + ".source <> h" + i + ".destination";
             }
+			// Union over all the num_hops sized paths. if num_hops < maxLength then pad with -1.
             String s_n_d = "h1.destination = " + destination + " AND h" + num_hops + ".source = " + source;
             String exact_num_hops_query = "SELECT " + current_select_part + " FROM hops h1\n" +
                     join_part + "WHERE \n" + s_n_d + circle_condition;
@@ -621,12 +692,14 @@ public class Solution {
                 paths_query = exact_num_hops_query;
             }
         }
+		// actual_load_join is the table with actual_load that we join for each hop in our path
         String actual_load_join = "LEFT OUTER JOIN \n" +
                 "(SELECT hops.source AS s, hops.destination AS d, (count(*) + 1) * hops.load AS al FROM users \n" + "" +
                 "INNER JOIN hops ON users.source = hops.source AND users.destination = hops.destination \n" +
                 "GROUP BY hops.source, hops.destination, hops.load) AS L";
         select_part = "";
         join_part = "";
+		// sum_part is an incremental variable responsible for the length of the path (sum of hops actual load)
         String sum_part = "";
         for (int num_hops = 1; num_hops <= maxLength + 1; num_hops++){
             select_part += "col" + num_hops + ", ";
